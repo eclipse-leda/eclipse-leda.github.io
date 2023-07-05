@@ -1,0 +1,51 @@
+# /********************************************************************************
+# * Copyright (c) 2023 Contributors to the Eclipse Foundation
+# *
+# * See the NOTICE file(s) distributed with this work for additional
+# * information regarding copyright ownership.
+# *
+# * This program and the accompanying materials are made available under the
+# * terms of the Eclipse Public License 2.0 which is available at
+# * http://www.eclipse.org/legal/epl-2.0
+# *
+# * SPDX-License-Identifier: EPL-2.0
+# ********************************************************************************/
+
+name: CI workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  Build-documentation:
+    runs-on: ubuntu-latest
+    name: Building documentation
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.110.0"
+          extended: true
+
+      - name: Download theme
+        run: |
+          git clone https://github.com/jpanther/lynx.git themes/lynx
+
+      - name: Build
+        run: |
+          hugo
+
+# only publish pages if it's the upstream
+      - name: Publish to GH Pages
+        if: github.repository_owner == 'eclipse-leda'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh_pages

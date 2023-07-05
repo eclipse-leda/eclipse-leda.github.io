@@ -1,0 +1,20 @@
+baseURL = "https://athul.github.io/"
+languageCode = "en-us"
+defaultContentLanguage = "en-us"
+theme="lynx"
+title = "Eclipse Leda"
+copyright = "2023 Eclipse Leda"
+enableEmoji = true
+disableKinds = ["taxonomy", "term"]
+
+[author]
+  name = "Eclipse Leda"
+  headline = "Paving the Way for Software-Defined Vehicles through Open Source"
+  image = "images/eclipse-leda-logo_02_rgb.png"
+
+  links = [
+  { link = { href = "https://eclipse-leda.github.io/leda/docs/", text = "Eclipse Leda Docmentation"} },
+  { email = {href = "mailto:leda-dev@eclipse.org", text  = "Email the Leda Dev Mailing list"} },
+  { github = { href = "https://github.com/eclipse-leda", text = "Leda on GitHub" } },
+  { eclipse-foundation = {href="https://projects.eclipse.org/projects/automotive.leda", text = "Leda on Eclipse Foundation Website"}},
+  ]
