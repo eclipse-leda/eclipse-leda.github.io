@@ -1,4 +1,4 @@
-baseURL = "https://eclipse-leda.github.io"
+baseURL = "https://eclipse-leda.github.io/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 theme="lynx"
